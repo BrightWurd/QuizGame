@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <head> </head>
+  </head>
+  <body>
+    <div class="main remix" id="main">
+      <section id="section">
+        <img
+          id="historySlide"
+          class="the-slide-Images correction"
+          src="./Images/history/R.jpg"
+          alt=""
+        />
+      </section>
+      <div class="clock" id="clock">00:00:00</div>
+      <div class="the-before-extra" id="the-animate">
+        <!-- the box holding the return button and the score box -->
+        <h1 class="cut">History</h1>
+        <div class="the-top-icons">
+          <a href="./gamePage.html">
+            <div class="btn">
+              <i class="fas fa-arrow-left"></i>
+            </div>
+          </a>
+          <div class="Score-count">
+            <div class="the-count" id="the-count">0</div>
+          </div>
+          <!-- the box holding the questions and answers -->
+        </div>
+        <div class="the-questions-and-answers-box-holder">
+          <div id="history-question1" class="the-question"></div>
+          <div id="history-answers1" class="the-answers">
+            <button id="history-answerA1" class="btn nigga">A</button>
+            <button id="history-answerB1" class="btn nigga">B</button>
+            <button id="history-answerC1" class="btn nigga">C</button>
+            <button id="history-answerD1" class="btn nigga">D</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // the question and answers array
+
+      const historyQuestion = [
+        // list of question in the historical questions
+        {
+          question: "Who was the first President of the United States?",
+          options: [
+            "Thomas Jefferson",
+            "John Adams",
+            "James Madison",
+            "George Washington",
+          ],
+          answer: 3,
+        },
+        {
+          question: "Which ancient civilization built the pyramids?",
+          options: ["Greeks", "Romans", "Egyptians", "Mayans"],
+          answer: 2,
+        },
+        {
+          question: "Who wrote the Declaration of Independence?",
+          options: [
+            "Benjamin Franklin",
+            "George Washington",
+            "John Hancock",
+            "Thomas Jefferson",
+          ],
+          answer: 3,
+        },
+        {
+          question:
+            "What was the name of the ship that brought the Pilgrims to America in 1620?",
+          options: [
+            "The Santa Maria",
+            "The Pinta",
+            "The Nina",
+            "The Mayflower",
+          ],
+          answer: 3,
+        },
+        {
+          question: "What year did World War I begin?",
+          options: ["1912", "1914", "1916", "1918"],
+          answer: 1,
+        },
+        {
+          question: "Which ancient civilization built the Great Wall of China?",
+          options: ["Romans", "Greeks", "Chinese", "Persians"],
+          answer: 2,
+        },
+        {
+          question: "Who was the first Emperor of Rome?",
+          options: ["Julius Caesar", "Augustus", "Nero", "Constantine"],
+          answer: 1,
+        },
+        {
+          question:
+            "Which event is considered the start of the French Revolution?",
+          options: [
+            "Storming of the Bastille",
+            "Execution of Louis XVI",
+            "Reign of Terror",
+            "Napoleon's coup",
+          ],
+          answer: 0,
+        },
+        {
+          question: "Which city was the capital of the Byzantine Empire?",
+          options: ["Athens", "Constantinople", "Rome", "Jerusalem"],
+          answer: 1,
+        },
+        {
+          question: "Who is credited with inventing the printing press?",
+          options: [
+            "Johannes Gutenberg",
+            "Leonardo da Vinci",
+            "Galileo Galilei",
+            "Isaac Newton",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "What was the name of the first successful manned mission to the Moon?",
+          options: ["Apollo 11", "Gemini 7", "Mercury 3", "Sputnik 1"],
+          answer: 0,
+        },
+        {
+          question: "Who was the first woman to win a Nobel Prize?",
+          options: [
+            "Marie Curie",
+            "Rosalind Franklin",
+            "Florence Nightingale",
+            "Mother Teresa",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "Who was the first woman to fly solo across the Atlantic Ocean?",
+          options: [
+            "Bessie Coleman",
+            "Harriet Quimby",
+            "Amelia Earhart",
+            "Jacqueline Cochran",
+          ],
+          answer: 2,
+        },
+        {
+          question:
+            "Which country was the first to grant women the right to vote?",
+          options: [
+            "United States",
+            "United Kingdom",
+            "New Zealand",
+            "Australia",
+          ],
+          answer: 2,
+        },
+        {
+          question: "What was the primary language of the Roman Empire?",
+          options: ["Greek", "Latin", "Italian", "Arabic"],
+          answer: 1,
+        },
+        {
+          question:
+            "Who was the leader of the Soviet Union during World War II?",
+          options: [
+            "Vladimir Lenin",
+            "Nikita Khrushchev",
+            "Joseph Stalin",
+            "Leonid Brezhnev",
+          ],
+          answer: 2,
+        },
+        {
+          question: "Which philosopher wrote 'The Republic'?",
+          options: ["Aristotle", "Socrates", "Plato", "Epicurus"],
+          answer: 2,
+        },
+        {
+          question:
+            "Which battle marked the turning point of the American Civil War?",
+          options: [
+            "Battle of Bull Run",
+            "Battle of Gettysburg",
+            "Battle of Antietam",
+            "Battle of Shiloh",
+          ],
+          answer: 1,
+        },
+        {
+          question:
+            "What was the name of the first artificial Earth satellite launched by the Soviet Union in 1957?",
+          options: ["Sputnik 1", "Luna 2", "Vostok 1", "Soyuz 1"],
+          answer: 0,
+        },
+        {
+          question:
+            "Who was the British Prime Minister at the start of World War II?",
+          options: [
+            "Neville Chamberlain",
+            "Winston Churchill",
+            "Clement Attlee",
+            "Harold Macmillan",
+          ],
+          answer: 0,
+        },
+        // Additional historical questions
+        {
+          question: "What was the year of the Boston Tea Party?",
+          options: ["1773", "1775", "1776", "1778"],
+          answer: 0,
+        },
+        {
+          question:
+            "Who was the first European explorer to reach India by sea?",
+          options: [
+            "Vasco da Gama",
+            "Christopher Columbus",
+            "Ferdinand Magellan",
+            "Marco Polo",
+          ],
+          answer: 0,
+        },
+        {
+          question: "What year did the Berlin Wall fall?",
+          options: ["1987", "1989", "1991", "1993"],
+          answer: 1,
+        },
+        {
+          question:
+            "Who was the first woman to be Prime Minister of the United Kingdom?",
+          options: [
+            "Margaret Thatcher",
+            "Theresa May",
+            "Indira Gandhi",
+            "Golda Meir",
+          ],
+          answer: 0,
+        },
+        {
+          question: "Who was the first person to circumnavigate the Earth?",
+          options: [
+            "Ferdinand Magellan",
+            "Christopher Columbus",
+            "Sir Francis Drake",
+            "James Cook",
+          ],
+          answer: 0,
+        },
+        {
+          question: "What year did the American Civil War end?",
+          options: ["1863", "1865", "1867", "1870"],
+          answer: 1,
+        },
+        {
+          question:
+            "Who was the first woman to fly solo across the Atlantic Ocean?",
+          options: [
+            "Bessie Coleman",
+            "Harriet Quimby",
+            "Amelia Earhart",
+            "Jacqueline Cochran",
+          ],
+          answer: 2,
+        },
+        {
+          question: "Who is known as the 'Father of the Constitution'?",
+          options: [
+            "George Washington",
+            "Thomas Jefferson",
+            "James Madison",
+            "Benjamin Franklin",
+          ],
+          answer: 2,
+        },
+        {
+          question: "What year did the Titanic sink?",
+          options: ["1909", "1912", "1915", "1918"],
+          answer: 1,
+        },
+        {
+          question: "Who invented the telephone?",
+          options: [
+            "Alexander Graham Bell",
+            "Thomas Edison",
+            "Nikola Tesla",
+            "Guglielmo Marconi",
+          ],
+          answer: 0,
+        },
+      ];
+
+      // the history buttons
+      const history_Question = document.getElementById("history-question1");
+      const historyAnswer1 = document.getElementById("history-answerA1");
+      const historyAnswer2 = document.getElementById("history-answerB1");
+      const historyAnswer3 = document.getElementById("history-answerC1");
+      const historyAnswer4 = document.getElementById("history-answerD1");
+      const button = document.getElementsByClassName("btn");
+      const theCount = document.getElementById("the-count");
+
+      let history_Answer = [
+        historyAnswer1,
+        historyAnswer2,
+        historyAnswer3,
+        historyAnswer4,
+      ];
+
+      let numbersOfQuestionDone = 0;
+
+      let currentQuestion = 0;
+      function checker(index) {
+        rightIndex = index - 1;
+        if (rightIndex == historyQuestion[currentQuestion].answer) {
+          console.log("Correct answer!");
+          var currentScore = parseInt(theCount.innerHTML);
+          var newScore = currentScore + 1;
+          theCount.innerHTML = newScore;
+        } else {
+          console.log("Incorrect answer!");
+        }
+        currentQuestion++;
+        numbersOfQuestionDone++;
+        scoreKeeper();
+        next();
+      }
+
+      function scoreKeeper() {
+        if (numbersOfQuestionDone === 19) {
+          alert("You have covered half of the questions, so keep going!");
+        } else if (numbersOfQuestionDone === 29) {
+          alert(
+            "you just finished the whole quiz and your score is " +
+              theCount.innerHTML
+          );
+        } else {
+          console.log(numbersOfQuestionDone);
+        }
+      }
+
+      function click() {
+        // / runs the click function
+        for (let i = 0; i < button.length; i++) {
+          button[i].addEventListener("click", function () {
+            // listens for the button clicked index
+            checker(i);
+          });
+        }
+        next(); // calls the next function
+      }
+
+      function next() {
+        // bring out the next question and display in on the question box interface
+        history_Question.innerHTML = JSON.stringify(
+          historyQuestion[currentQuestion].question
+        );
+        // loops to display the answers on the buttons interface
+        for (
+          let v = 0;
+          v < historyQuestion[currentQuestion].options.length;
+          v++
+        ) {
+          history_Answer[v].innerHTML =
+            historyQuestion[currentQuestion].options[v];
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        alert(
+          "welcome player in this section you have a maximum of 30 questions"
+        );
+        alert(
+          "you will be told when you get to 20 which is half the question 'a milestone'"
+        );
+        alert(
+          "your score will be displayed in the score box above the questions"
+        );
+        click();
+      });
+
+      const historyImages = [
+        "./Images/history/R.jpg",
+        "./Images/history/rem.jpg",
+        "./Images/history/yem.jpg",
+        "./Images/history/OIP.jpg",
+      ];
+
+      let historyCurrentIndex = 0;
+      const historySlide = document.getElementById("historySlide");
+
+      function changeHistoryImage() {
+        historyCurrentIndex = (historyCurrentIndex + 1) % historyImages.length;
+        historySlide.src = historyImages[historyCurrentIndex];
+      }
+
+      setInterval(changeHistoryImage, 10000); // Change image every 10 seconds
+
+      let seconds = 0;
+      let minutes = 0;
+      let hours = 0;
+
+      function updateTime() {
+        seconds++;
+        if (seconds >= 60) {
+          seconds = 0;
+          minutes++;
+        }
+        if (minutes >= 60) {
+          minutes = 0;
+          hours++;
+        }
+        document.getElementById("clock").textContent = `${String(
+          hours
+        ).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(
+          seconds
+        ).padStart(2, "0")}`;
+      }
+
+      window.onload = function () {
+        setInterval(updateTime, 1000);
+      };
+    </script>
+    <script
+      src="https://kit.fontawesome.com/_yourcode_.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <head> </head>
+  </head>
+  <body>
+    <div class="main remix" id="main">
+      <section id="section">
+        <img
+          id="slideshow"
+          class="the-slide-Images correction"
+          src="./Images/nature/land-2.jpg"
+          alt=""
+        />
+      </section>
+      <div class="clock" id="myClock">00:00:00</div>
+      <div class="the-before-extra" id="the-animate">
+        <!-- the box holding the return button and the score box -->
+        <h1 class="cut">Nature</h1>
+        <div class="the-top-icons">
+          <a href="./gamePage.html">
+            <div class="btn">
+              <i class="fas fa-arrow-left"></i>
+            </div>
+          </a>
+          <div class="Score-count">
+            <div class="the-count" id="the-count">0</div>
+          </div>
+          <!-- the box holding the questions and answers -->
+        </div>
+        <div class="the-questions-and-answers-box-holder">
+          <div id="natureQuestion1" class="the-question">pojasdohiUD7GH</div>
+          <div id="nature-answers1" class="the-answers">
+            <button id="natureAnswerA1" class="btn nigga">A</button>
+            <button id="natureAnswerB1" class="btn nigga">B</button>
+            <button id="natureAnswerC1" class="btn nigga">C</button>
+            <button id="natureAnswerD1" class="btn nigga">D</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let seconds = 0;
+
+      function updateClock() {
+        seconds++;
+        const hrs = String(Math.floor(seconds / 3600)).padStart(2, "0");
+        const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
+        const secs = String(seconds % 60).padStart(2, "0");
+
+        const currentTime = `${hrs}:${mins}:${secs}`;
+        document.getElementById("myClock").textContent = currentTime;
+      }
+
+      // Start the clock automatically
+      setInterval(updateClock, 1000);
+
+      // Your JavaScript code here
+
+      const butto = document.getElementsByClassName("btn");
+
+      // the nature button// Get the question element
+      var questionElement = document.getElementById("natureQuestion1");
+
+      // Get the answers container element
+      var answersContainer = document.getElementById("nature-answers1");
+
+      // Get the individual answer buttons
+      var answerAButton = document.getElementById("natureAnswerA1");
+      var answerBButton = document.getElementById("natureAnswerB1");
+      var answerCButton = document.getElementById("natureAnswerC1");
+      var answerDButton = document.getElementById("natureAnswerD1");
+      const natureQuestions = [
+        {
+          question: "What is the tallest type of grass?",
+          options: ["Bamboo", "Wheat", "Sugarcane", "Corn"],
+          answer: 0,
+        },
+        {
+          question: "What is the largest mammal in the world?",
+          options: [
+            "African Elephant",
+            "Blue Whale",
+            "Giraffe",
+            "Hippopotamus",
+          ],
+          answer: 1,
+        },
+        {
+          question: "Which plant is known as the 'lungs of the Earth'?",
+          options: ["Cactus", "Amazon Rainforest", "Kelp", "Moss"],
+          answer: 2,
+        },
+        {
+          question:
+            "Which bird is known for its impressive memory and ability to mimic sounds?",
+          options: ["Parrot", "Crow", "Canary", "Owl"],
+          answer: 0,
+        },
+        {
+          question: "What is the fastest land animal?",
+          options: ["Lion", "Cheetah", "Gazelle", "Horse"],
+          answer: 1,
+        },
+        {
+          question: "Which tree produces acorns?",
+          options: ["Pine", "Maple", "Oak", "Birch"],
+          answer: 2,
+        },
+        {
+          question: "What is the largest coral reef system in the world?",
+          options: [
+            "Great Barrier Reef",
+            "Red Sea Coral Reef",
+            "New Caledonia Barrier Reef",
+            "Florida Reef",
+          ],
+          answer: 0,
+        },
+        {
+          question: "Which is the only flying mammal?",
+          options: ["Flying Squirrel", "Bat", "Pigeon", "Eagle"],
+          answer: 1,
+        },
+        {
+          question: "What is the most poisonous frog?",
+          options: [
+            "Bullfrog",
+            "Poison Dart Frog",
+            "Tree Frog",
+            "Leopard Frog",
+          ],
+          answer: 1,
+        },
+        {
+          question: "What is the largest type of deer?",
+          options: ["White-tailed Deer", "Red Deer", "Moose", "Reindeer"],
+          answer: 2,
+        },
+        {
+          question: "Which animal is known as the 'Ship of the Desert'?",
+          options: ["Elephant", "Camel", "Horse", "Donkey"],
+          answer: 1,
+        },
+        {
+          question: "Which insect is known for its ability to produce honey?",
+          options: ["Butterfly", "Beetle", "Bee", "Ant"],
+          answer: 2,
+        },
+        {
+          question: "What is the largest species of penguin?",
+          options: [
+            "Emperor Penguin",
+            "King Penguin",
+            "Adelie Penguin",
+            "Chinstrap Penguin",
+          ],
+          answer: 0,
+        },
+        {
+          question: "Which ocean is the largest?",
+          options: [
+            "Atlantic Ocean",
+            "Indian Ocean",
+            "Arctic Ocean",
+            "Pacific Ocean",
+          ],
+          answer: 3,
+        },
+        {
+          question: "What is the largest land carnivore?",
+          options: ["Lion", "Tiger", "Polar Bear", "Grizzly Bear"],
+          answer: 2,
+        },
+        {
+          question: "Which type of tree do we get cork from?",
+          options: ["Oak", "Pine", "Birch", "Maple"],
+          answer: 0,
+        },
+        {
+          question: "Which animal is known for having three hearts?",
+          options: ["Dolphin", "Octopus", "Shark", "Whale"],
+          answer: 1,
+        },
+        {
+          question: "What is the most common gas in the Earth's atmosphere?",
+          options: ["Oxygen", "Hydrogen", "Nitrogen", "Carbon Dioxide"],
+          answer: 2,
+        },
+        {
+          question: "Which animal is known for changing its color?",
+          options: ["Chameleon", "Snake", "Lizard", "Gecko"],
+          answer: 0,
+        },
+        {
+          question: "What is the tallest mountain in the world?",
+          options: ["K2", "Kangchenjunga", "Mount Everest", "Lhotse"],
+          answer: 2,
+        },
+        // Additional nature-related questions
+        {
+          question: "What is the smallest bird in the world?",
+          options: ["Hummingbird", "Wren", "Swift", "Bee Hummingbird"],
+          answer: 3,
+        },
+        {
+          question: "What is the largest reptile in the world?",
+          options: ["Crocodile", "Komodo Dragon", "Anaconda", "Alligator"],
+          answer: 0,
+        },
+        {
+          question: "What is the national animal of Australia?",
+          options: ["Kangaroo", "Koala", "Emu", "Platypus"],
+          answer: 0,
+        },
+        {
+          question: "What is the largest carnivorous plant?",
+          options: [
+            "Venus Flytrap",
+            "Pitcher Plant",
+            "Sundew",
+            "Nepenthes Rajah",
+          ],
+          answer: 3,
+        },
+        {
+          question: "Which animal is known as the 'King of the Jungle'?",
+          options: ["Lion", "Tiger", "Leopard", "Panther"],
+          answer: 0,
+        },
+        {
+          question: "What is the fastest animal in the world?",
+          options: [
+            "Peregrine Falcon",
+            "Cheetah",
+            "Sailfish",
+            "Pronghorn Antelope",
+          ],
+          answer: 0,
+        },
+        {
+          question: "Which flower is associated with love and romance?",
+          options: ["Rose", "Lily", "Tulip", "Daisy"],
+          answer: 0,
+        },
+        {
+          question: "What is the national tree of Canada?",
+          options: ["Maple", "Cedar", "Pine", "Oak"],
+          answer: 0,
+        },
+        {
+          question: "Which animal is known for its ability to hibernate?",
+          options: ["Bear", "Rabbit", "Squirrel", "Deer"],
+          answer: 0,
+        },
+        {
+          question: "What is the only mammal capable of true flight?",
+          options: ["Bat", "Flying Squirrel", "Flying Fox", "Sugar Glider"],
+          answer: 0,
+        },
+      ];
+
+      let nature_Answer = [
+        answerAButton,
+        answerBButton,
+        answerCButton,
+        answerDButton,
+      ];
+
+      questionElement.innerHTML = "New question text";
+
+      window.addEventListener("DOMContentLoaded", function () {
+        // Your JavaScript code here
+        alert(
+          "welcome player in this section you have a maximum of 30 questions"
+        );
+
+        alert(
+          "you will be told when you get to 20 which is half the question 'a milestone'"
+        );
+        alert(
+          "your score will be displayed in the score box above the questions"
+        );
+        click();
+      });
+
+      var theCount = document.getElementById("the-count");
+      let currentQuestion = 0;
+      function checker(index) {
+        rightIndex = index - 1;
+        if (rightIndex == natureQuestions[currentQuestion].answer) {
+          console.log("Correct answer!");
+          var currentScore = parseInt(theCount.innerHTML);
+          var newScore = currentScore + 1;
+          theCount.innerHTML = newScore;
+          console.log(theCount);
+        } else {
+          console.log("Incorrect answer!");
+        }
+        currentQuestion++;
+        scoreKeeper();
+        next();
+      }
+
+      let numbersOfQuestionDone = 0;
+
+      function scoreKeeper() {
+        if (numbersOfQuestionDone === 19) {
+          alert("You have covered half of the questions, so keep going!");
+        } else if (numbersOfQuestionDone === 28) {
+          alert(
+            "you just finished the whole quiz and your score is " +
+              theCount.innerHTML
+          );
+        } else {
+          console.log(numbersOfQuestionDone);
+        }
+        numbersOfQuestionDone++;
+      }
+
+      function click() {
+        // / runs the click function
+        for (let i = 0; i < butto.length; i++) {
+          butto[i].addEventListener("click", function () {
+            // listens for the button clicked index
+            checker(i);
+          });
+        }
+        next(); // calls the next function
+      }
+      function next() {
+        // bring out the next question and display it on the question box interface
+        questionElement.innerHTML = natureQuestions[currentQuestion].question;
+        // loop to display the answers on the buttons interface
+        for (
+          let v = 0;
+          v < natureQuestions[currentQuestion].options.length;
+          v++
+        ) {
+          nature_Answer[v].innerHTML =
+            natureQuestions[currentQuestion].options[v];
+        }
+      }
+      function incrementCount() {}
+
+      // the sildeimage
+      const natureImages = [
+        "./Images/nature/n.jpg",
+        "./Images/nature/nature.jpg",
+        "./Images/nature/land-2.jpg",
+        "./Images/nature/nat.jpg",
+      ];
+
+      let natureCurrentIndex = 0;
+      const natureSlideshow = document.getElementById("slideshow");
+
+      function changeNatureImage() {
+        natureCurrentIndex = (natureCurrentIndex + 1) % natureImages.length;
+        natureSlideshow.src = natureImages[natureCurrentIndex];
+      }
+
+      setInterval(changeNatureImage, 10000); // Change image every 10 seconds
+    </script>
+    <script src="./nature.js"></script>
+    <script
+      src="https://kit.fontawesome.com/_yourcode_.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

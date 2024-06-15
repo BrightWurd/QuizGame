@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <head> </head>
+  </head>
+  <body>
+    <div class="main remix" id="main">
+      <section id="section">
+        <img
+          id="carSlide"
+          class="the-slide-Images correction"
+          src="./Images/AUTOmotive back ground.jpg"
+          alt=""
+        />
+      </section>
+      <div class="clock" id="myClock">00:00:00</div>
+      <div class="the-before-extra" id="the-animate">
+        <!-- the box holding the return button and the score box -->
+        <h1 class="cut">Automotive</h1>
+        <div class="the-top-icons">
+          <a href="./gamePage.html">
+            <div class="btn">
+              <i class="fas fa-arrow-left"></i>
+            </div>
+          </a>
+          <div class="Score-count">
+            <div class="the-count" id="theCount">0</div>
+          </div>
+          <!-- the box holding the questions and answers -->
+        </div>
+        <div class="the-questions-and-answers-box-holder">
+          <div id="automotive" class="the-question"></div>
+          <div id="Automotive-answers1" class="the-answers">
+            <button id="automotiveAnswerA1" class="btn nigga">A</button>
+            <button id="automotiveAnswerB1" class="btn nigga">B</button>
+            <button id="automotiveAnswerC1" class="btn nigga">C</button>
+            <button id="automotiveAnswerD1" class="btn nigga">D</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let seconds = 0;
+
+      function updateClock() {
+        seconds++;
+        const hrs = String(Math.floor(seconds / 3600)).padStart(2, "0");
+        const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
+        const secs = String(seconds % 60).padStart(2, "0");
+
+        const currentTime = `${hrs}:${mins}:${secs}`;
+        document.getElementById("myClock").textContent = currentTime;
+      }
+
+      // Your JavaScript code here
+
+      const button = document.getElementsByClassName("btn");
+
+      // the nature button// Get the question element
+      const questionElement = document.getElementById("automotive");
+
+      // Get the answers container element
+      const answersContainer = document.getElementById("Automotive-answers1");
+
+      // Get the individual answer buttons
+      const answerAButton = document.getElementById("automotiveAnswerA1");
+      const answerBButton = document.getElementById("automotiveAnswerB1");
+      const answerCButton = document.getElementById("automotiveAnswerC1");
+      const answerDButton = document.getElementById("automotiveAnswerD1");
+
+      const vehiclesQuestions = [
+        // Cars
+        {
+          question: "Which automobile manufacturer produces the Mustang?",
+          options: ["Ford", "Chevrolet", "Dodge", "Toyota"],
+          answer: 0,
+        },
+        {
+          question: "What was the first mass-produced car?",
+          options: [
+            "Ford Model T",
+            "Chevrolet Series C Classic Six",
+            "Mercedes-Benz Patent-Motorwagen",
+            "Toyota Model AA",
+          ],
+          answer: 0,
+        },
+        {
+          question: "Which car brand produces the Camry?",
+          options: ["Honda", "Ford", "Toyota", "Chevrolet"],
+          answer: 2,
+        },
+        {
+          question: "What is the top speed of the Bugatti Chiron?",
+          options: ["250 mph", "261 mph", "270 mph", "278 mph"],
+          answer: 3,
+        },
+        {
+          question: "Which car is known as 'The People's Car'?",
+          options: [
+            "Toyota Corolla",
+            "Honda Civic",
+            "Volkswagen Beetle",
+            "Ford Fiesta",
+          ],
+          answer: 2,
+        },
+        {
+          question: "What car is often referred to as the 'Gullwing'?",
+          options: [
+            "Porsche 911",
+            "Chevrolet Corvette",
+            "Mercedes-Benz 300SL",
+            "Ford GT",
+          ],
+          answer: 2,
+        },
+        {
+          question: "What does SUV stand for?",
+          options: [
+            "Sports Utility Vehicle",
+            "Sport Utility Van",
+            "Super Utility Vehicle",
+            "Special Utility Vehicle",
+          ],
+          answer: 0,
+        },
+        {
+          question: "Which car manufacturer produces the Corvette?",
+          options: ["Chevrolet", "Ford", "Dodge", "Toyota"],
+          answer: 0,
+        },
+        {
+          question:
+            "What was the first car to be mass-produced with an engine?",
+          options: [
+            "Ford Model T",
+            "Chevrolet Series C Classic Six",
+            "Benz Patent-Motorwagen",
+            "Toyota Model AA",
+          ],
+          answer: 2,
+        },
+        {
+          question: "What is the horsepower of a Lamborghini Aventador?",
+          options: ["610 hp", "700 hp", "750 hp", "800 hp"],
+          answer: 1,
+        },
+
+        // Bikes
+        {
+          question: "Which motorcycle company produces the Hayabusa?",
+          options: ["Honda", "Yamaha", "Suzuki", "Kawasaki"],
+          answer: 2,
+        },
+        {
+          question: "What is the top speed of the Kawasaki Ninja H2R?",
+          options: ["200 mph", "220 mph", "240 mph", "260 mph"],
+          answer: 3,
+        },
+        {
+          question: "Which bike brand produces the CBR1000RR?",
+          options: ["Suzuki", "Kawasaki", "Yamaha", "Honda"],
+          answer: 3,
+        },
+        {
+          question:
+            "What is the engine displacement of a Ducati Panigale V4 R?",
+          options: ["1000cc", "1100cc", "1200cc", "1300cc"],
+          answer: 1,
+        },
+        {
+          question:
+            "What motorcycle is often referred to as 'The King of the Road'?",
+          options: [
+            "Yamaha YZF-R1",
+            "Suzuki Hayabusa",
+            "Kawasaki Ninja H2",
+            "Harley-Davidson Road King",
+          ],
+          answer: 3,
+        },
+        {
+          question: "What does 'CC' stand for in motorcycle terminology?",
+          options: [
+            "Cylinder Capacity",
+            "Cubic Capacity",
+            "Cylinder Control",
+            "Cubic Centimeter",
+          ],
+          answer: 3,
+        },
+        {
+          question: "Which motorcycle manufacturer produces the GSX-R1000?",
+          options: ["Kawasaki", "Yamaha", "Suzuki", "Honda"],
+          answer: 2,
+        },
+        {
+          question: "What is the top speed of a Yamaha YZF-R1?",
+          options: ["170 mph", "180 mph", "190 mph", "200 mph"],
+          answer: 3,
+        },
+        {
+          question:
+            "What is the engine configuration of a Harley-Davidson Fat Boy?",
+          options: ["V4", "Inline-4", "V-Twin", "Inline-6"],
+          answer: 2,
+        },
+        {
+          question: "Which bike brand produces the ZX-10R?",
+          options: ["Kawasaki", "Yamaha", "Suzuki", "Honda"],
+          answer: 0,
+        },
+
+        // Fighter Jets
+        {
+          question: "Which country developed the F-22 Raptor?",
+          options: ["Russia", "China", "United States", "France"],
+          answer: 2,
+        },
+        {
+          question: "What is the top speed of an F-16 Fighting Falcon?",
+          options: ["Mach 1.6", "Mach 1.8", "Mach 2.0", "Mach 2.2"],
+          answer: 3,
+        },
+        {
+          question: "Which fighter jet is also known as the 'Viper'?",
+          options: [
+            "F-16 Fighting Falcon",
+            "F-22 Raptor",
+            "Su-35",
+            "Eurofighter Typhoon",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "What is the primary fighter jet of the United States Navy?",
+          options: [
+            "F-16 Fighting Falcon",
+            "F/A-18 Super Hornet",
+            "F-22 Raptor",
+            "Su-35",
+          ],
+          answer: 1,
+        },
+        {
+          question: "Which country developed the Eurofighter Typhoon?",
+          options: ["United Kingdom", "Germany", "France", "Italy"],
+          answer: 0,
+        },
+        {
+          question: "What is the wingspan of an F-35 Lightning II?",
+          options: ["35 feet", "40 feet", "45 feet", "50 feet"],
+          answer: 2,
+        },
+        {
+          question: "Which fighter jet is nicknamed the 'Flanker'?",
+          options: [
+            "Su-35",
+            "F-22 Raptor",
+            "Eurofighter Typhoon",
+            "F-16 Fighting Falcon",
+          ],
+          answer: 0,
+        },
+        {
+          question: "What is the maximum range of a Rafale fighter jet?",
+          options: ["1,500 miles", "2,000 miles", "2,500 miles", "3,000 miles"],
+          answer: 1,
+        },
+        {
+          question: "Which country developed the Su-35 fighter jet?",
+          options: ["Russia", "United States", "China", "France"],
+          answer: 0,
+        },
+        {
+          question: "What is the maximum speed of an F-15 Eagle?",
+          options: ["Mach 2.0", "Mach 2.2", "Mach 2.4", "Mach 2.6"],
+          answer: 1,
+        },
+      ];
+      let numbersOfQuestionDone = 0;
+      let currentQuestion = 0;
+
+      let nature_Answer = [
+        answerAButton,
+        answerBButton,
+        answerCButton,
+        answerDButton,
+      ];
+
+      document.addEventListener("DOMContentLoaded", function () {
+        alert(
+          "welcome player in this section you have a maximum of 30 questions"
+        );
+        alert(
+          "you will be told when you get to 20 which is half the question 'a milestone'"
+        );
+        alert(
+          "your score will be displayed in the score box above the questions"
+        );
+        click();
+      });
+
+      function checker(index) {
+        const rightIndex = index - 1;
+        if (rightIndex == vehiclesQuestions[currentQuestion].answer) {
+          console.log("Correct answer!");
+          var currentScore = parseInt(theCount.innerHTML);
+          var newScore = currentScore + 1;
+          theCount.innerHTML = newScore;
+        } else {
+          console.log("Incorrect answer!");
+        }
+        currentQuestion++;
+        next();
+        scoreKeeper();
+        numbersOfQuestionDone++;
+        console.log(numbersOfQuestionDone);
+      }
+
+      function click() {
+        // Runs the click function
+        for (let i = 0; i < button.length; i++) {
+          button[i].addEventListener("click", function () {
+            // Listens for the button clicked index
+            checker(i); // Ensure index is aligned with question answer index
+          });
+        }
+        console.log("peter");
+        next(); // Calls the next function
+      }
+
+      function scoreKeeper() {
+        if (numbersOfQuestionDone === 19) {
+          alert("You have covered half of the questions, so keep going!");
+        } else if (numbersOfQuestionDone === 29) {
+          alert(
+            "you just finished the whole quiz and your score is " +
+              theCount.innerHTML
+          );
+        } else {
+          console.log(numbersOfQuestionDone);
+        }
+      }
+
+      function next() {
+        if (currentQuestion >= vehiclesQuestions.length) {
+          console.log("No more questions!");
+          return;
+        }
+        // Bring out the next question and display it on the question box interface
+        questionElement.innerHTML = vehiclesQuestions[currentQuestion].question;
+
+        // Loop to display the answers on the buttons interface
+        for (
+          let v = 0;
+          v < vehiclesQuestions[currentQuestion].options.length;
+          v++
+        ) {
+          nature_Answer[v].innerHTML =
+            vehiclesQuestions[currentQuestion].options[v];
+        }
+      }
+
+      const carImages = [
+        "./Images/automotive/one.jpg",
+        "./Images/automotive/erd.jpg",
+        "./Images/automotive/five.jpg",
+        "./Images/automotive/bike.jpg",
+      ];
+
+      let carCurrentIndex = 0;
+      const carSlide = document.getElementById("carSlide");
+
+      function changeCarImage() {
+        carCurrentIndex = (carCurrentIndex + 1) % carImages.length;
+        carSlide.src = carImages[carCurrentIndex];
+      }
+
+      setInterval(changeCarImage, 10000); // Change image every 10 seconds
+
+      // Start the clock automatically
+      setInterval(updateClock, 1000);
+    </script>
+    <script
+      src="https://kit.fontawesome.com/_yourcode_.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
